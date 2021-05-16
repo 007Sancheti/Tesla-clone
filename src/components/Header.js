@@ -15,9 +15,12 @@ function Header() {
                 <img src='/images/logo.svg'></img>
             </a>
             <Menu>
-                {cars && cars.map((car, index)=>(
-                    <a key={index} href="#">{car}</a>
-                ))}
+                {cars &&
+                    cars.map((car, index) => (
+                        <a key={index} href='#'>
+                            {car}
+                        </a>
+                    ))}
             </Menu>
             <RightMenu>
                 <a href='#'>Shop</a>
@@ -28,9 +31,14 @@ function Header() {
                 <CloseWrapper>
                     <CustomClose onClick={() => setBurgerStatus(false)} />
                 </CloseWrapper>
-                {cars && cars.map((car, index)=>(
-                    <li key={index}><a href="#">{car}</a></li>
-                ))}
+                <ShowModelsName>
+                    {cars &&
+                        cars.map((car, index) => (
+                            <li key={index}>
+                                <a href='#'>{car}</a>
+                            </li>
+                        ))}
+                </ShowModelsName>
                 <li>
                     <a href='#'>Existing Inventory</a>
                 </li>
@@ -86,6 +94,12 @@ const RightMenu = styled.div`
 `;
 const CustomMenu = styled(MenuIcon)`
     cursor: pointer;
+`;
+const ShowModelsName = styled.div`
+    display: none;
+    @media (max-width: 768px) {
+        display: block;
+    }
 `;
 const BurgerNav = styled.div`
     position: fixed;
